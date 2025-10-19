@@ -2,17 +2,16 @@
 name = "project-boardgames-data-validation"
 version = "0.1.0"
 description = "BGG Data Quality project using Great Expectations and Delta Lake medallion architecture"
-authors = [Leo Lis "<unkind58@gmail.com>"]
+authors = ["Leo Lis <unkind58@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "project_boardgames_data_validation" }]
+# packages = [{ include = "project_boardgames_data_validation" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 
 # Core stack
 pyspark = "3.5.0"
-pandas = "^2.2.2"
-pyarrow = "^17.0.0"
+pandas = "^2.1.0"
 
 # Data generation
 faker = "^25.0.0"
@@ -22,8 +21,9 @@ great-expectations = "0.18.22"
 great-expectations-experimental = "^0.1.20240305009"
 
 # Visualization / exploration
-matplotlib = "3.9.1"
-seaborn = "0.13.5"
+matplotlib = "*"
+seaborn = "*"
+ipykernel  = "*"
 ipywidgets = "8.1.1"
 
 # Cloud / optional
