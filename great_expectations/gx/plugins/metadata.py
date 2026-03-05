@@ -165,17 +165,129 @@ METADATA = {
     },
     "gold": {
         "country_sales":{
-            "incr_field":'silver_processed_timestamp',
+            "incr_field":'gold_generated_timestamp',
             "path_prefix": 'data/gold/country_sales/',
             "format":'delta',
             "run_mode":['full','incremental'],
             "model":{
-
+                "customer_country_name":{"data_type":"StringType", "nullable":False},
+                "total_revenue":{"data_type":"DoubleType", "nullable":False},
+                "avg_profit_margin_pct":{"data_type":"DoubleType", "nullable":False},
+                "gold_generated_timestamp":{"data_type":"TimestampType", "nullable":False}
+            }
+        },
+        "monthly_sales_summary":{
+            "incr_field":'gold_generated_timestamp',
+            "path_prefix": 'data/gold/monthly_sales_summary/',
+            "format":'delta',
+            "run_mode":['full','incremental'],
+            "model":{
+                "year":{"data_type":"IntegerType", "nullable":False},
+                "month":{"data_type":"IntegerType", "nullable":False},
+                "total_revenue":{"data_type":"DoubleType", "nullable":False},
+                "total_profit":{"data_type":"DoubleType", "nullable":False},
+                "total_orders":{"data_type":"IntegerType", "nullable":False},
+                "gold_generated_timestamp":{"data_type":"TimestampType", "nullable":False}
+            }
+        },
+        "top_10_games":{
+            "incr_field":'gold_generated_timestamp',
+            "path_prefix": 'data/gold/top_10_games/',
+            "format":'delta',
+            "run_mode":['full','incremental'],
+            "model":{
+                "year": {"data_type": "IntegerType", "nullable": False},
+                "month": {"data_type": "IntegerType", "nullable": False},
+                "game_name": {"data_type": "StringType", "nullable": False},
+                "montly_total_revenue": {"data_type": "DoubleType", "nullable": False},
+                "rank": {"data_type": "IntegerType", "nullable": False},
+                "gold_generated_timestamp": {"data_type": "TimestampType", "nullable": False}
+            }
+        },
+        "employee_performance":{
+            "incr_field": 'gold_generated_timestamp',
+            "path_prefix": 'data/gold/employee_performance/',
+            "format": 'delta',
+            "run_mode": ['full', 'incremental'],
+            "model":{
+                "year": {"data_type": "IntegerType", "nullable": False},
+                "month": {"data_type": "IntegerType, ", "nullable": False},
+                "employee_name": {"data_type": "StringType", "nullable": False},
+                "total_sales": {"data_type": "DoubleType", "nullable": False},
+                "total_profit": {"data_type": "DoubleType", "nullable": False},
+                "gold_generated_timestamp": {"data_type": "TimestampType", "nullable": False}
+            }
+        }
+    },
+        "reference-data":{
+        "geography":{
+            "incr_field":None,
+            "path_prefix": 'data/reference-data/geography/',
+            "format":'delta',
+            "run_mode": ['full'],
+            "model":{
+                "country_id":{"data_type":"IntegerType", "nullable":False},
+                "country_name":{"data_type":"StringType", "nullable":False},
+                "country_code":{"data_type":"StringType", "nullable":False},
+                "region_id": {"data_type": "IntegerType", "nullable": False},
+                "region_name":{"data_type":"StringType", "nullable":False},
+                "continent_id":{"data_type":"IntegerType", "nullable":False},
+                "continent_name":{"data_type":"StringType", "nullable":False}
+            }
+        },
+        "vendors":{
+            "incr_field":None,
+            "path_prefix": 'data/reference-data/vendors/',
+            "format":'delta',
+            "run_mode": ['full'],
+            "model":{
+                "vendor_id":{"data_type":"StringType", "nullable":False},
+                "vendor_name":{"data_type":"StringType", "nullable":False},
+                "vendor_country":{"data_type":"StringType", "nullable":False},
+                "vendor_city":{"data_type":"StringType", "nullable":True},
+                "vat_number":{"data_type":"StringType", "nullable":True}
+            }
+        },
+        "delivery":{
+            "incr_field":None,
+            "path_prefix": 'data/reference-data/delivery/',
+            "format":'delta',
+            "run_mode": ['full'],
+            "model":{
+                "delivery_id":{"data_type":"StringType", "nullable":False},
+                "delivery_company_name":{"data_type":"StringType", "nullable":False},
+                "delivery_type":{"data_type":"StringType", "nullable":False}
+            }
+        },
+        "google_analytics":{
+            "incr_field":None,
+            "path_prefix": 'data/reference-data/google_analytics/',
+            "format":'delta',
+            "run_mode": ['full'],
+            "model":{
+                "ga_id":{"data_type":"StringType", "nullable":False},
+                "ga_source_id":{"data_type":"StringType", "nullable":False},
+                "ga_device_type":{"data_type":"StringType", "nullable":False}
+            }
+        },
+        "calendar": {
+            "incr_field": None,
+            "path_prefix": 'data/reference-data/calendar/',
+            "format": 'delta',
+            "run_mode": ['full'],
+            "model": {
+                "date": {"data_type": "DateType", "nullable": False},
+                "year": {"data_type": "IntegerType", "nullable": False},
+                "month": {"data_type": "IntegerType", "nullable": False},
+                "month_name": {"data_type": "StringType", "nullable": False},
+                "day": {"data_type": "IntegerType", "nullable": False},
+                "day_of_week": {"data_type": "IntegerType", "nullable": False},
+                "week_of_year": {"data_type": "IntegerType", "nullable": False},
+                "quarter": {"data_type": "IntegerType", "nullable": False},
+                "is_weekend": {"data_type": "BooleanType", "nullable": False},
+                "is_month_start": {"data_type": "BooleanType", "nullable": False},
+                "is_month_end": {"data_type": "BooleanType", "nullable": False}
             }
         }
     }
 }
-
-
-
-
