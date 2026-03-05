@@ -14,12 +14,15 @@ Below listed packages are required to set up the local environment.
 - JupyterHub
 - Poetry
 - Python 3.11+
-- Java JDK 11+
+- Java JDK 11+ 
+- Hadoop (winutils.exe & hadoop.dll, required on Windows for PySpark)
 
- After installing Python 3.11+ and Java JDK 11+ (required for PySpark), make sure to:
+ After installing Python 3.11+, Java JDK 11+ (required for PySpark) and Hadoop, make sure to:
  - set the `JAVA_HOME` environment variable to point to your JDK folder
  - add `%JAVA_HOME%\bin` to your system PATH
- - add Python folder containing `python.exe` to your system PATH
+ - set the `HADOOP_HOME` environment variable to point to bin directory
+ - add `%HADOOP_HOME%\bin` to your system PATH
+ - add Python folder containing `python.exe` to your system PATH 
 
 ## Installation of Dependencies and run JupyterHub
 To install the required dependencies, please use `poetry``. 
@@ -45,6 +48,13 @@ Run JupyterHub:
    ```
 Select the kernel `Python 3.11 (boardgames-env)` in your notebooks.
 
+## Generate Data for Data Validation
+In order to generate Data for Data Validation, run the following notebooks in the order listed below:
+1. notebooks/`01_generate_and_enhance_reference_data.ipynb` - generates reference data for data validation.
+2. notebooks/`02_generate_and_enhance_bronze_data.ipynb` - generates bronze data for data validation, which is the raw data ingested from the source.
+3. notebooks/`03_generate_and_enhance_silver_data.ipynb` - generates silver data for data validation, which is the cleaned and transformed data. (enriched data)
+4. notebooks/`04_generate_and_enhance_gold_data.ipynb` - generates gold data for data validation, which is the final, aggregated data ready for analysis.
+
 ## Running Data Quality checks from Jupyter notebooks
 
-###TBA...
+###TBA... 
