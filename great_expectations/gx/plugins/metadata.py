@@ -291,3 +291,30 @@ METADATA = {
         }
     }
 }
+
+
+REPORT_SCHEMA = StructType([
+    StructField("RunName", StringType(), True),
+    StructField("RunTime", TimestampType(), True),
+    StructField("DqMetric", StringType(), True),
+    StructField("CheckName", StringType(), True),
+    StructField("ColumnName", StringType(), True),
+    StructField("Success", StringType(), True),
+    StructField("SuccessPercentage", StringType(), True),
+    StructField("UnexpectedCount", IntegerType(), True),
+    StructField("Layer", StringType(), True),
+    StructField("ColumnType", StringType(), True),
+    StructField("ElementCount", IntegerType(), True),
+    StructField("UnexpectedPercent", DoubleType(), True),
+    StructField("PartialUnexpectedValues", StringType(), True),
+    StructField("ObservedValue", StringType(), True),
+    StructField("ExceptionMessage", StringType(), True),
+    StructField("Year", IntegerType(), True),
+    StructField("Month", IntegerType(), True),
+    StructField("Day", IntegerType(), True),
+    StructField("Mode", StringType(), True),
+    StructField("Entity", StringType(), True),
+    StructField("Limit", StringType(), True),
+    StructField("FromDate", TimestampType(), True),
+    StructField("ToDate", TimestampType(), True)
+])
