@@ -154,7 +154,7 @@ class ConfigurationBase:
             .withColumn("SuccessPercentage", round("SuccessPercentage", 2))\
             .filter((self.dq_report.Layer == layer)).orderBy("DqMetric", "CheckName", "ColumnName")
 
-            print(f" {layer.title()}.{datasource.title()}")
+            print(f"{layer.title()}.{datasource.title()}")
 
             result_summary.show(100, truncate=False)
 
