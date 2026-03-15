@@ -56,7 +56,7 @@ class SparkConnector(ConfigurationBase):
             return None
 
     def perform_filtering(self, df):
-        if self.datasource_map[self.layer][self.datasource]['conditions']:
+        if self.datasource_map[self.layer][self.datasource].get('conditions'):
             df = df.where(f"{self.datasource_map[self.layer][self.datasource]['conditions']}")
         return df
 
@@ -64,11 +64,11 @@ class SparkConnector(ConfigurationBase):
     def entity_incremental_query_factor(self, df):
         incr_field = self.datasource_map[self.layer][self.datasource]['incr_field']
         if incr_field:
-            if not (self.from_date == '' or self.from_date is None or self.from_date == 'None'):
-                df = df.filter(df[incr_field]) >= datetime.strptime(self.from_date[:10], '%Y-%m-%d')
-            if not (self.to_date == '' or self.to_date is None or self.to_date == 'None'):
-                df = df.filter(df[incr_field]) <= datetime.strptime(self.to_date[:10], '%Y-%m-%d')
-            if not (self.limit == '' or self.limit is None or self.limit == 'None' or self.limit == '0'):
+            if self.from_date not in ['', None, 'None']:
+                df = df.filter(df[incr_field] >= self.from_date[:10])
+            if self.to_date not in ['', None, 'None']:
+                df = df.filter(df[incr_field] <= self.to_date[:10])
+            if self.limit not in ['', None, 'None', '0']:
                 df = df.limit(int(self.limit))
             self.logger.info("The dataset was filtered based on selected widget's parameters.")
         return df
