@@ -12,7 +12,7 @@ from pyspark.sql.types import (
 )
 
 
-from great_expectations.gx.plugins.configurations import ConfigurationBase
+from data_quality.gx.plugins.configurations import ConfigurationBase
 
 class SparkConnector(ConfigurationBase):
     def __init__(self):

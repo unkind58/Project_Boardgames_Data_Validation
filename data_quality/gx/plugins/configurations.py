@@ -16,7 +16,7 @@ from pyspark.sql.types import (
     LongType
 )
 
-from great_expectations.gx.plugins.metadata import METADATA, REPORT_SCHEMA
+from data_quality.gx.plugins.metadata import METADATA, REPORT_SCHEMA
 
 
 class ConfigurationBase:

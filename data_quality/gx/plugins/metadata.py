@@ -10,6 +10,7 @@ from pyspark.sql.types import (
 )
 
 
+
 METADATA = {
     "bronze":{
         "customers":{
@@ -291,7 +292,6 @@ METADATA = {
         }
     }
 }
-
 
 REPORT_SCHEMA = StructType([
     StructField("RunName", StringType(), True),
