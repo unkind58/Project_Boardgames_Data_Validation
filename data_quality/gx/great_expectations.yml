@@ -46,6 +46,11 @@ data_docs_sites:
         validation_results_limit: 500
 anonymous_usage_statistics:
   enabled: False
-fluent_datasources: {}
-
+fluent_datasources:
+   bronze_games_bgg:
+     TYPE: spark
+     assets:
+       bronze_games_bgg_asset:
+         type: dataframe
+         batch_metadata: {}
 
