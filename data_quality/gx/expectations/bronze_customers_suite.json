@@ -1,0 +1,569 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "bronze_customers_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "first_name"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "first_name"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "last_name"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "last_name"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "country_id"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "country_id"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "registration_date"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "registration_date"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "ingestion_timestamp"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "ingestion_timestamp"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "source_system"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "source_system"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 2
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_table_column_count_to_equal",
+      "kwargs": {
+        "value": 8
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "ingestion_timestamp",
+        "min_value": "2025-12-31 11:40:48.729870"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Timeliness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "ingestion_timestamp",
+        "regex": "\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\s([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.\\d+"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "email",
+        "regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "customer_id",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "first_name",
+        "type_": "StringType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "last_name",
+        "type_": "StringType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "email",
+        "type_": "StringType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "country_id",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "registration_date",
+        "type_": "DateType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "ingestion_timestamp",
+        "type_": "TimestampType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "source_system",
+        "type_": "StringType"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "country_id",
+        "value_set": [
+          148,
+          833,
+          496,
+          392,
+          540,
+          858,
+          31,
+          516,
+          580,
+          458,
+          804,
+          296,
+          876,
+          108,
+          744,
+          368,
+          642,
+          796,
+          756,
+          772,
+          28,
+          762,
+          300,
+          784,
+          76,
+          688,
+          332,
+          626,
+          384,
+          831,
+          44,
+          192,
+          12,
+          336,
+          860,
+          388,
+          417,
+          548,
+          578,
+          663,
+          222,
+          372,
+          604,
+          686,
+          232,
+          233,
+          246,
+          360,
+          654,
+          140,
+          132,
+          152,
+          882,
+          694,
+          660,
+          748,
+          704,
+          512,
+          52,
+          768,
+          212,
+          674,
+          442,
+          792,
+          218,
+          348,
+          440,
+          16,
+          474,
+          760,
+          887,
+          178,
+          308,
+          328,
+          20,
+          40,
+          470,
+          500,
+          340,
+          250,
+          570,
+          292,
+          120,
+          634,
+          646,
+          96,
+          620,
+          776,
+          840,
+          732,
+          48,
+          266,
+          191,
+          268,
+          258,
+          729,
+          430,
+          92,
+          780,
+          826,
+          64,
+          504,
+          554,
+          598,
+          764,
+          484,
+          262,
+          112,
+          666,
+          854,
+          862,
+          659,
+          316,
+          462,
+          231,
+          324,
+          586,
+          72,
+          398,
+          175,
+          498,
+          850,
+          583,
+          196,
+          834,
+          800,
+          4,
+          8,
+          100,
+          450,
+          380,
+          520,
+          446,
+          238,
+          624,
+          84,
+          136,
+          728,
+          434,
+          585,
+          51,
+          428,
+          438,
+          706,
+          400,
+          533,
+          524,
+          234,
+          312,
+          50,
+          404,
+          320,
+          418,
+          364,
+          288,
+          703,
+          356,
+          591,
+          795,
+          24,
+          818,
+          70,
+          408,
+          156,
+          480,
+          740,
+          226,
+          528,
+          558,
+          214,
+          710,
+          352,
+          492,
+          798,
+          678,
+          752,
+          32,
+          60,
+          90,
+          630,
+          203,
+          662,
+          414,
+          608,
+          724,
+          376,
+          56,
+          254,
+          478,
+          534,
+          426,
+          574,
+          170,
+          702,
+          807,
+          304,
+          612,
+          188,
+          204,
+          508,
+          68,
+          116,
+          600,
+          638,
+          344,
+          832,
+          454,
+          242,
+          270,
+          690,
+          499,
+          466,
+          566,
+          276,
+          124,
+          184,
+          682,
+          275,
+          535,
+          894,
+          616,
+          174,
+          410,
+          562,
+          716,
+          705,
+          144,
+          670,
+          180,
+          104,
+          643,
+          584,
+          788,
+          36,
+          208,
+          422
+        ]
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {
+        "Layer": "bronze",
+        "dimension": "Uniqueness"
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.22"
+  }
+}

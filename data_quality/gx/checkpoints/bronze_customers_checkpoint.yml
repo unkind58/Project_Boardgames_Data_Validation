@@ -1,0 +1,24 @@
+name: bronze_customers_checkpoint
+config_version: 1.0
+template_name:
+module_name: great_expectations.checkpoint
+class_name: Checkpoint
+run_name_template: '%Y%m%d-%H%M%S-bronze-customers'
+expectation_suite_name:
+batch_request: {}
+action_list:
+  - name: store_validation_result
+    action:
+      class_name: StoreValidationResultAction
+evaluation_parameters: {}
+runtime_configuration: {}
+validations:
+  - batch_request:
+      datasource_name: bronze_customers
+      data_asset_name: bronze_customers_asset
+      options: {}
+      batch_slice:
+    expectation_suite_name: bronze_customers_suite
+profilers: []
+ge_cloud_id:
+expectation_suite_ge_cloud_id:

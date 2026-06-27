@@ -223,7 +223,7 @@ METADATA = {
         "reference-data":{
         "geography":{
             "incr_field":None,
-            "path_prefix": 'data/reference-data/geography/',
+            "path_prefix": 'data/reference/geography/',
             "format":'delta',
             "run_mode": ['full'],
             "model":{
@@ -238,7 +238,7 @@ METADATA = {
         },
         "vendors":{
             "incr_field":None,
-            "path_prefix": 'data/reference-data/vendors/',
+            "path_prefix": 'data/reference/vendors/',
             "format":'delta',
             "run_mode": ['full'],
             "model":{
@@ -251,7 +251,7 @@ METADATA = {
         },
         "delivery":{
             "incr_field":None,
-            "path_prefix": 'data/reference-data/delivery/',
+            "path_prefix": 'data/reference/delivery/',
             "format":'delta',
             "run_mode": ['full'],
             "model":{
@@ -262,7 +262,7 @@ METADATA = {
         },
         "google_analytics":{
             "incr_field":None,
-            "path_prefix": 'data/reference-data/google_analytics/',
+            "path_prefix": 'data/reference/google_analytics/',
             "format":'delta',
             "run_mode": ['full'],
             "model":{
@@ -273,7 +273,7 @@ METADATA = {
         },
         "calendar": {
             "incr_field": None,
-            "path_prefix": 'data/reference-data/calendar/',
+            "path_prefix": 'data/reference/calendar/',
             "format": 'delta',
             "run_mode": ['full'],
             "model": {
