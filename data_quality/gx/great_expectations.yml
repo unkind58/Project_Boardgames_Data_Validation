@@ -94,6 +94,12 @@ fluent_datasources:
       reference_ga_asset:
         type: dataframe
         batch_metadata: {}
+  silver_sales_enriched:
+    type: spark
+    assets:
+      silver_sales_enriched_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false
