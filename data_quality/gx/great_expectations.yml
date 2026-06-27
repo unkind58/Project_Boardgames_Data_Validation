@@ -58,6 +58,12 @@ fluent_datasources:
       bronze_customers_asset:
         type: dataframe
         batch_metadata: {}
+  bronze_employees:
+    type: spark
+    assets:
+      bronze_employees_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false
