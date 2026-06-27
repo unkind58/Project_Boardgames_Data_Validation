@@ -205,14 +205,14 @@ METADATA = {
                 "gold_generated_timestamp": {"data_type": "TimestampType", "nullable": False}
             }
         },
-        "employee_performance":{
+        "employee_perform":{
             "incr_field": 'gold_generated_timestamp',
             "path_prefix": 'data/gold/employee_performance/',
             "format": 'delta',
             "run_mode": ['full', 'incremental'],
             "model":{
                 "year": {"data_type": "IntegerType", "nullable": False},
-                "month": {"data_type": "IntegerType, ", "nullable": False},
+                "month": {"data_type": "IntegerType", "nullable": False},
                 "employee_name": {"data_type": "StringType", "nullable": False},
                 "total_sales": {"data_type": "DoubleType", "nullable": False},
                 "total_profit": {"data_type": "DoubleType", "nullable": False},

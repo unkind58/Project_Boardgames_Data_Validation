@@ -118,6 +118,12 @@ fluent_datasources:
       gold_top_10_games_asset:
         type: dataframe
         batch_metadata: {}
+  gold_employee_perform:
+    type: spark
+    assets:
+      gold_employee_perform_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false

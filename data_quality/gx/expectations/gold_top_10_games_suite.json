@@ -146,7 +146,7 @@
       "expectation_type": "expect_column_max_to_be_between",
       "kwargs": {
         "column": "gold_generated_timestamp",
-        "min_value": "2025-12-31 19:59:50.390443"
+        "min_value": "2025-12-31 20:43:50.555072"
       },
       "meta": {
         "Layer": "gold",
@@ -5264,6 +5264,59 @@
           "Brass: Lancashire",
           "12 Days",
           "Ascension: Storm of Souls"
+        ]
+      },
+      "meta": {
+        "Layer": "gold",
+        "dimension": "Integrity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "year",
+        "value_set": [
+          1990,
+          2025,
+          2027,
+          2003,
+          2007,
+          2018,
+          2015,
+          2023,
+          2006,
+          2022,
+          2013,
+          1997,
+          1994,
+          2026,
+          2014,
+          2019,
+          2004,
+          1991,
+          2029,
+          1996,
+          2030,
+          1998,
+          2020,
+          2012,
+          2009,
+          2016,
+          1995,
+          2001,
+          2028,
+          2024,
+          1992,
+          2005,
+          2000,
+          2010,
+          2011,
+          2008,
+          2017,
+          1999,
+          2002,
+          2021,
+          1993
         ]
       },
       "meta": {
