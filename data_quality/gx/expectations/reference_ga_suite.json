@@ -83,36 +83,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "ga_device_type",
-        "value_set": [
-          "pc",
-          "tablet",
-          "mobile",
-          "other"
-        ]
-      },
-      "meta": {
-        "Layer": "reference",
-        "dimension": "Validity"
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "ga_source_id",
-        "value_set": [
-          "app",
-          "web"
-        ]
-      },
-      "meta": {
-        "Layer": "reference",
-        "dimension": "Validity"
-      }
-    },
-    {
       "expectation_type": "expect_column_values_to_be_of_type",
       "kwargs": {
         "column": "ga_id",
@@ -143,6 +113,36 @@
       "meta": {
         "Layer": "reference",
         "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "ga_device_type",
+        "value_set": [
+          "pc",
+          "tablet",
+          "mobile",
+          "other"
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "ga_source_id",
+        "value_set": [
+          "app",
+          "web"
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
       }
     },
     {

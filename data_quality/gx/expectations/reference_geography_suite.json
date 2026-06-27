@@ -163,24 +163,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "continent_name",
-        "value_set": [
-          "Europe",
-          "Latin America and the Caribbean",
-          "Africa",
-          "Northern America",
-          "Oceania",
-          "Asia"
-        ]
-      },
-      "meta": {
-        "Layer": "reference",
-        "dimension": "Validity"
-      }
-    },
-    {
       "expectation_type": "expect_column_values_to_match_regex",
       "kwargs": {
         "column": "country_code",
@@ -266,6 +248,24 @@
       "meta": {
         "Layer": "reference",
         "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "continent_name",
+        "value_set": [
+          "Europe",
+          "Latin America and the Caribbean",
+          "Africa",
+          "Northern America",
+          "Oceania",
+          "Asia"
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
       }
     },
     {

@@ -83,21 +83,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "delivery_type",
-        "value_set": [
-          "Air",
-          "Sea",
-          "Road"
-        ]
-      },
-      "meta": {
-        "Layer": "reference",
-        "dimension": "Validity"
-      }
-    },
-    {
       "expectation_type": "expect_column_values_to_be_of_type",
       "kwargs": {
         "column": "delivery_id",
@@ -128,6 +113,21 @@
       "meta": {
         "Layer": "reference",
         "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "delivery_type",
+        "value_set": [
+          "Air",
+          "Sea",
+          "Road"
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
       }
     },
     {

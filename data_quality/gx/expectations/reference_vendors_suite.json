@@ -413,7 +413,7 @@
       },
       "meta": {
         "Layer": "reference",
-        "dimension": "Validity"
+        "dimension": "Integrity"
       }
     },
     {
