@@ -124,6 +124,12 @@ fluent_datasources:
       gold_employee_perform_asset:
         type: dataframe
         batch_metadata: {}
+  reference_calendar:
+    type: spark
+    assets:
+      reference_calendar_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false

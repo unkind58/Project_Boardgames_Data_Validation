@@ -1,0 +1,440 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "reference_calendar_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "date"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "date"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "year"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "year"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "month"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "month"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "month_name"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "month_name"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "day"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "day"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "day_of_week"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "day_of_week"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "week_of_year"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "week_of_year"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "quarter"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "quarter"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "is_weekend"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "is_weekend"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "is_month_start"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "is_month_start"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "is_month_end"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "is_month_end"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 2
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_table_column_count_to_equal",
+      "kwargs": {
+        "value": 11
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "date",
+        "type_": "DateType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "year",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "month",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "month_name",
+        "type_": "StringType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "day",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "day_of_week",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "week_of_year",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "quarter",
+        "type_": "IntegerType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "is_weekend",
+        "type_": "BooleanType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "is_month_start",
+        "type_": "BooleanType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "is_month_end",
+        "type_": "BooleanType"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "day_of_week",
+        "value_set": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "quarter",
+        "value_set": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "month_name",
+        "value_set": [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ]
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Integrity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "date"
+      },
+      "meta": {
+        "Layer": "reference",
+        "dimension": "Uniqueness"
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.22"
+  }
+}
