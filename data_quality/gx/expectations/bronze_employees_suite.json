@@ -196,7 +196,7 @@
       "expectation_type": "expect_column_max_to_be_between",
       "kwargs": {
         "column": "ingestion_timestamp",
-        "min_value": "2025-12-31 16:56:21.786493"
+        "min_value": "2025-12-31 00:09:56.963815"
       },
       "meta": {
         "Layer": "bronze",
@@ -1124,6 +1124,7 @@
           "2025-08-22",
           "2026-05-18",
           "2026-06-23",
+          "2026-06-28",
           "2024-12-27",
           "2025-01-16",
           "2025-08-23",

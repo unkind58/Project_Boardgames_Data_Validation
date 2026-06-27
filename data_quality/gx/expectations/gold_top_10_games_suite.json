@@ -146,7 +146,7 @@
       "expectation_type": "expect_column_max_to_be_between",
       "kwargs": {
         "column": "gold_generated_timestamp",
-        "min_value": "2025-12-31 20:43:50.555072"
+        "min_value": "2025-12-31 00:21:35.218293"
       },
       "meta": {
         "Layer": "gold",

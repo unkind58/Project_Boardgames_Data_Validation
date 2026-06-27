@@ -61,6 +61,9 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# Great Expectations stuff:
+validation_results/
+
 # Flask stuff:
 instance/
 .webassets-cache

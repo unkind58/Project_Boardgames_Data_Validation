@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-
+import time
 from pyparsing import withClass
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg, round, filter
@@ -27,7 +27,7 @@ class ConfigurationBase:
         self.datasource = os.environ.get('DQ_DATASOURCE')
         self.layer = os.environ.get('DQ_LAYER')
         self.limit = os.environ.get('DQ_LIMIT', '0')
-        self.from_date = os.environ.get('DQ_FROM_DATE','1900-01-01')
+        self.from_date = os.environ.get('DQ_FROM_DATE','1988-01-01')
         self.to_date = os.environ.get('DQ_TO_DATE','2049-01-01')
         self.version = os.environ.get('DQ_VERSION', '0.1')
 
@@ -110,12 +110,12 @@ class ConfigurationBase:
                     if result.get('exception_info') else None
 
                 table_data.append({
-                    "RunName": f"{checkpoint_result.run_id.run_name}_{mode}",
-                    "RunTime": checkpoint_result.run_id.run_time,
+                    "RunName": f"{checkpoint_results.run_id.run_name}_{mode}",
+                    "RunTime": checkpoint_results.run_id.run_time,
                     "DqMetric": dimension,
-                    "SuccessPercentage": percent,
+                    "SuccessPercentage": float(percent),
                     "CheckName": check_name,
-                    "ColumnName": column_name,
+                    "ColumnName": (column_name[:50] + "...") if column_name and len(column_name) > 50 else column_name,
                     "ColumnType": column_type,
                     "UnexpectedCount": unexpected_count,
                     "Success": success,
@@ -125,9 +125,9 @@ class ConfigurationBase:
                     "PartialUnexpectedValues": str(partial_unexpected_list if partial_unexpected_list else None),
                     "ObservedValue": observed_value,
                     "ExceptionMessage": exception_message,
-                    "Year": checkpoint_result.run_id.run_time.year,
-                    "Month": checkpoint_result.run_id.run_time.month,
-                    "Day": checkpoint_result.run_id.run_time.day,
+                    "Year": checkpoint_results.run_id.run_time.year,
+                    "Month": checkpoint_results.run_id.run_time.month,
+                    "Day": checkpoint_results.run_id.run_time.day,
                     "Mode": self.mode,
                     "Entity": self.datasource,
                     "Limit": self.limit,
@@ -135,18 +135,18 @@ class ConfigurationBase:
                     "ToDate": datetime.strptime(self.to_date, '%Y-%m-%d')
                 })
 
-            self.dq_report = self.spark.createDataFrame(table_data, schema=REPORT_SCHEMA)
+        self.dq_report = self.spark.createDataFrame(table_data, schema=REPORT_SCHEMA)
 
 
     def show_report(self, layer: str, datasource: str, summary_report: bool = True, detailed_report: bool = True):
         if summary_report:
             result_summary = self.dq_report.select("DqMetric", "SuccessPercentage")\
                 .groupBy("DqMetric")\
-                .agg(round(avg("SuccessPercentage"),2).alias("AverageSuccessPercentage"))
+                .agg(round(avg("SuccessPercentage"),2).alias("SuccessPercentage"))
 
             print(f" {layer.title()}.{datasource.title()}")
 
-            result_summary.select("DqMetric", "SuccessPercentage").orderBy("DqMetric").show(10)
+            result_summary.select("DqMetric", "SuccessPercentage").orderBy("DqMetric").show(10, False)
         if detailed_report:
             result_summary = self.dq_report.select("DqMetric", "CheckName",
                                                    "ColumnName", "SuccessPercentage",
@@ -158,8 +158,5 @@ class ConfigurationBase:
 
             result_summary.show(100, truncate=False)
 
-
-
     def save_report(self):
         self.dq_report.write.format(self.result_format).mode("append").save(self.result_location())
-

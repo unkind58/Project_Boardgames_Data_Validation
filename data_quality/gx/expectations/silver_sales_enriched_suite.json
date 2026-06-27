@@ -1046,7 +1046,7 @@
       "expectation_type": "expect_column_max_to_be_between",
       "kwargs": {
         "column": "silver_processed_timestamp",
-        "min_value": "2025-12-31 19:14:41.892571"
+        "min_value": "2025-12-31 00:14:42.709223"
       },
       "meta": {
         "Layer": "silver",
