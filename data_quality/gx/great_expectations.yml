@@ -70,6 +70,12 @@ fluent_datasources:
       bronze_sales_asset:
         type: dataframe
         batch_metadata: {}
+  reference_geography:
+    type: spark
+    assets:
+      reference_geography_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false

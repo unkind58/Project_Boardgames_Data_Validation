@@ -220,7 +220,7 @@ METADATA = {
             }
         }
     },
-        "reference-data":{
+    "reference":{
         "geography":{
             "incr_field":None,
             "path_prefix": 'data/reference/geography/',
