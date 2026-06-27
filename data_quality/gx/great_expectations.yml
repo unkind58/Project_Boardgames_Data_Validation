@@ -112,6 +112,12 @@ fluent_datasources:
       gold_monthly_sales_asset:
         type: dataframe
         batch_metadata: {}
+  gold_top_10_games:
+    type: spark
+    assets:
+      gold_top_10_games_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false
