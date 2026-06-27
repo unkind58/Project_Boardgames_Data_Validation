@@ -177,7 +177,7 @@ METADATA = {
                 "gold_generated_timestamp":{"data_type":"TimestampType", "nullable":False}
             }
         },
-        "monthly_sales_summary":{
+        "monthly_sales":{
             "incr_field":'gold_generated_timestamp',
             "path_prefix": 'data/gold/monthly_sales_summary/',
             "format":'delta',

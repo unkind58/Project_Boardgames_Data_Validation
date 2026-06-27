@@ -106,6 +106,12 @@ fluent_datasources:
       gold_country_sales_asset:
         type: dataframe
         batch_metadata: {}
+  gold_monthly_sales:
+    type: spark
+    assets:
+      gold_monthly_sales_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false
