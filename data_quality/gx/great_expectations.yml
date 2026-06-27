@@ -100,6 +100,12 @@ fluent_datasources:
       silver_sales_enriched_asset:
         type: dataframe
         batch_metadata: {}
+  gold_country_sales:
+    type: spark
+    assets:
+      gold_country_sales_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false
