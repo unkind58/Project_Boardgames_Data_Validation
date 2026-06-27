@@ -88,6 +88,12 @@ fluent_datasources:
       reference_delivery_asset:
         type: dataframe
         batch_metadata: {}
+  reference_ga:
+    type: spark
+    assets:
+      reference_ga_asset:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false

@@ -260,7 +260,7 @@ METADATA = {
                 "delivery_type":{"data_type":"StringType", "nullable":False}
             }
         },
-        "google_analytics":{
+        "ga":{
             "incr_field":None,
             "path_prefix": 'data/reference/google_analytics/',
             "format":'delta',

@@ -1,0 +1,27 @@
+name: reference_ga_checkpoint
+config_version: 1.0
+template_name:
+module_name: great_expectations.checkpoint
+class_name: Checkpoint
+run_name_template: '%Y%m%d-%H%M%S-reference-ga'
+expectation_suite_name:
+batch_request: {}
+action_list:
+  - name: store_validation_result
+    action:
+      class_name: StoreValidationResultAction
+  - name: update_data_docs
+    action:
+      class_name: UpdateDataDocsAction
+evaluation_parameters: {}
+runtime_configuration: {}
+validations:
+  - batch_request:
+      datasource_name: reference_ga
+      data_asset_name: reference_ga_asset
+      options: {}
+      batch_slice:
+    expectation_suite_name: reference_ga_suite
+profilers: []
+ge_cloud_id:
+expectation_suite_ge_cloud_id:
