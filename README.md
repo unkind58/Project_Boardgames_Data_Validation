@@ -105,7 +105,21 @@ The results of the checks are saved automatically in the `gx/uncommitted/validat
 Also, results are saved after each run in `\validation_results` folder as PARQUET files. The results can be used for further analysis and reporting as _delta_ table.
 
 ## Project Architecture
-
+```
+Project_Boardgames_Data_Validation/
+│
+├── notebooks/
+│   └── (data generator notebooks)
+│
+├── data_quality/
+│   └── (Data Quality framework: Great Expectations checkpoints, expectations, plugins, data-generators)
+│
+├── data/
+│   └── (storage for generated data: bronze / silver / gold layered datasets)
+│
+└── validation_results/
+    └── (stored outputs from GX data quality runs)
+```
 ###  Data-Generator Notebooks
 ```text
 notebooks/
