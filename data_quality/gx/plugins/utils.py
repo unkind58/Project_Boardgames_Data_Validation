@@ -82,6 +82,3 @@ def initialize_widgets():
     widgets_mode = widgets.interactive(select_mode, ds=layer_w)
 
     return widgets_combined
-
-
-

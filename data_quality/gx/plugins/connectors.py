@@ -72,16 +72,3 @@ class SparkConnector(ConfigurationBase):
                 df = df.limit(int(self.limit))
             self.logger.info("The dataset was filtered based on selected widget's parameters.")
         return df
-
-
-
-
-
-
-
-
-
-
-
-
-

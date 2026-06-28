@@ -10,7 +10,6 @@ from pyspark.sql.types import (
 )
 
 
-
 METADATA = {
     "bronze":{
         "customers":{
