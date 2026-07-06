@@ -59,12 +59,12 @@ In order to generate Data for Data Validation, run the following notebooks in th
 
 There are two notebooks for running and scheduling Data Quality checks:
 
-- data_quality_gx.ipynb
+- data_quality_runner.ipynb
 - data_quality_scheduler.ipynb
 
-### data_quality_gx.ipynb
+### data_quality_runner.ipynb
 
-Use "_data_quality_gx.ipynb_" as the primary module for executing Data Quality checks on a single data entity:
+Use "_data_quality_runner.ipynb_" as the primary module for executing Data Quality checks on a single data entity:
 
 1. Run the first step and select the required execution parameters to identify the target entity and execution mode, or provide the corresponding environment variables and values listed below:
     - Required:
@@ -81,7 +81,7 @@ Use "_data_quality_gx.ipynb_" as the primary module for executing Data Quality c
 
 Use "_data_quality_scheduler.ipynb_" as the primary module to execute Data Quality checks on all entities.
 
-All checks must be predefined in **PARAMS** variable. During execution script runs `_data_quality_gx.ipynb_` for each entity defined in **PARAMS** variable.
+All checks must be predefined in **PARAMS** variable. During execution script runs `_data_quality_runner.ipynb_` for each entity defined in **PARAMS** variable.
 
 
 ## Updating Data Quality checks using Jupyter Notebooks
@@ -105,7 +105,7 @@ The results of the checks are saved automatically in the `gx/uncommitted/validat
 Also, results are saved after each run in `\validation_results` folder as PARQUET files. The results can be used for further analysis and reporting as _delta_ table.
 
 ## Project Architecture
-```
+```text
 Project_Boardgames_Data_Validation/
 │
 ├── notebooks/
@@ -170,7 +170,7 @@ data/
 ```text
 data_quality/
 │
-├── data_quality_gx.ipynb
+├── data_quality_runner.ipynb
 ├── data_quality_scheduler.ipynb
 │
 ├── gx/
@@ -186,7 +186,7 @@ data_quality/
 │
 └── check_generators/
     │
-    ├── reference/
+    ├── reference-data/
     │   ├── calendar.ipynb
     │   ├── delivery.ipynb
     │   ├── geography.ipynb
