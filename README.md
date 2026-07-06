@@ -1,5 +1,5 @@
 # Project_Boardgames_Data_Validation
-This is BGG dataset, shortened to TOP-4999 games, enhanced with randomly generated data for data validation purposes
+This BoardGameGeek dataset is derived from [kaggle.com](https://www.kaggle.com/datasets/threnjen/board-games-database-from-boardgamegeek), reduced to the top 4999 games, and enhanced with randomly generated data for data validation purposes.
 
 ## Overview
 This repository contains a dataset derived from BoardGameGeek (BGG) that has been enhanced with randomly generated data and Data Quality Framework (DQF) used to test this dataset.
