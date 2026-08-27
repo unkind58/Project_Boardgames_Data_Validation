@@ -292,6 +292,14 @@ METADATA = {
     }
 }
 
+CRITICAL_CHECKS = [
+    "expect_column_values_to_be_unique",
+    "expect_table_row_count_to_be_between",
+    "expect_column_to_exist",
+    "expect_compound_columns_to_be_unique",
+    "expect_table_column_count_to_equal"
+]
+
 REPORT_SCHEMA = StructType([
     StructField("RunName", StringType(), True),
     StructField("RunTime", TimestampType(), True),

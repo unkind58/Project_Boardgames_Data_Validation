@@ -16,7 +16,7 @@ from pyspark.sql.types import (
     LongType
 )
 
-from data_quality.gx.plugins.metadata import METADATA, REPORT_SCHEMA
+from data_quality.gx.plugins.metadata import METADATA, CRITICAL_CHECKS, REPORT_SCHEMA
 
 
 class ConfigurationBase:
@@ -36,6 +36,7 @@ class ConfigurationBase:
         self.dq_report = None
         self.connection_time_out = '6000'
         self.datasource_map = METADATA
+        self.critical_checks = CRITICAL_CHECKS
         self.path_prefix = self.get_path_prefix()
         self.data_format = self.get_data_format()
         self.result_path = 'validation_results/'

@@ -4,7 +4,7 @@ This BoardGameGeek dataset is derived from [kaggle.com](https://www.kaggle.com/d
 ## Overview
 This repository contains a dataset derived from BoardGameGeek (BGG) that has been enhanced with randomly generated data and Data Quality Framework (DQF) used to test this dataset.
 
-The DQF is based on open-source tool 'Great Expectations' and provides the capability to ensure that data is loaded and processed correctly across various medallion layers.
+The DQF is based on open-source tool ['Great Expectations'](https://greatexpectations.io/) and provides the capability to ensure that data is loaded and processed correctly across various medallion layers.
 
 It provides verification checks to validate data objects, aggregations, schemas, joins, data types, transformations and enrichment, while tracking key dataset characteristics over time, including row counts, null values, uniqueness, and referential integrity.
 
@@ -104,6 +104,17 @@ The results can be viewed in the Jupyter notebook or in the HTML report generate
 The results of the checks are saved automatically in the `gx/uncommitted/validations/` folder as JSON files.
 Also, results are saved after each run in `\validation_results` folder as PARQUET files. The results can be used for further analysis and reporting as _delta_ table.
 
+### Custom Test Result Report
+
+The project also provides a custom test result report located in the `plugins/custom_report/` folder. 
+The report is designed to provide a more convenient overview of Data Quality results and includes:
+
+- **Pie Chart: Overall Amount of Passed Checks** – provides an overview of the overall number and percentage of passed checks.
+- **Bar Chart: Passed Checks by Data Quality Dimension** – shows the number of passed checks for each Data Quality dimension.
+- **Heatmap: Check Success Percentage per Layer and Entity by Data Quality Dimension** – shows the percentage of successful checks across data layers, entities, and Data Quality dimensions.
+- **Bar Chart: Run Over Run** – allows comparison of Data Quality results across different validation runs.
+- **Critical Data Quality Issues Table** – provides an overview of critical failed checks.
+- 
 ## Project Architecture
 ```text
 Project_Boardgames_Data_Validation/
@@ -180,8 +191,9 @@ data_quality/
 │   │   ├── configurations.py
 │   │   ├── connectors.py
 │   │   ├── metadata.py
-│   │   └── utils.py
-│   │
+│   │   ├── utils.py
+│   │   └── custom_report/
+│   │       └── test_result_report.ipynb
 │   └── great_expectations.yml
 │
 └── check_generators/
