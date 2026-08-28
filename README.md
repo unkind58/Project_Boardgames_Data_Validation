@@ -2,7 +2,7 @@
 This BoardGameGeek dataset is derived from [kaggle.com](https://www.kaggle.com/datasets/threnjen/board-games-database-from-boardgamegeek), reduced to the top 4999 games, and enhanced with randomly generated data for data validation purposes.
 
 ## Overview
-This repository contains a dataset derived from BoardGameGeek (BGG) that has been enhanced with randomly generated data and Data Quality Framework (DQF) used to test this dataset.
+This repository contains a dataset derived from BoardGameGeek (BGG) that has been augmented with randomly generated data and Data Quality Framework (DQF) used to test this dataset.
 
 The DQF is based on open-source tool ['Great Expectations'](https://greatexpectations.io/) and provides the capability to ensure that data is loaded and processed correctly across various medallion layers.
 
@@ -48,12 +48,20 @@ Run JupyterHub:
    ```
 Select the kernel `Python 3.11 (boardgames-env)` in your notebooks.
 
-## Generate Data for Data Validation
+## Generating Data for Data Validation
 In order to generate Data for Data Validation, run the following notebooks in the order listed below:
 1. notebooks/`01_generate_and_enhance_reference_data.ipynb` - generates reference data for data validation.
 2. notebooks/`02_generate_and_enhance_bronze_data.ipynb` - generates bronze data for data validation, which is the raw data ingested from the source.
 3. notebooks/`03_generate_and_enhance_silver_data.ipynb` - generates silver data for data validation, which is the cleaned and transformed data. (enriched data)
 4. notebooks/`04_generate_and_enhance_gold_data.ipynb` - generates gold data for data validation, which is the final, aggregated data ready for analysis.
+
+## Creating or Updating Data Quality checks using Jupyter Notebooks
+
+The `check_generators` folder contains notebooks to generate Data Quality checks for each data entity. They serve as the main engines of the Data Quality Framework (DQF).
+Each data entity has a dedicated check-generator notebook that acts as a tool where after every run:
+- expectations are generated and saved in the `expectations/` folder;
+- checkpoints are generated and saved in the `checkpoints/` folder;
+- data-source is being created or updated automatically in the `great_expectations.yml` file.
 
 ## Running Data Quality checks from Jupyter notebooks
 
@@ -64,7 +72,7 @@ There are two notebooks for running and scheduling Data Quality checks:
 
 ### data_quality_runner.ipynb
 
-Use "_data_quality_runner.ipynb_" as the primary module for executing Data Quality checks on a single data entity:
+Use "_data_quality_runner.ipynb_" as the primary module for executing Data Quality checks (once they were created by running check generators) on a single data entity:
 
 1. Run the first step and select the required execution parameters to identify the target entity and execution mode, or provide the corresponding environment variables and values listed below:
     - Required:
@@ -79,19 +87,9 @@ Use "_data_quality_runner.ipynb_" as the primary module for executing Data Quali
 
 ### data_quality_scheduler.ipynb
 
-Use "_data_quality_scheduler.ipynb_" as the primary module to execute Data Quality checks on all entities.
+Use "_data_quality_scheduler.ipynb_" as the primary module to execute Data Quality checks (once they were created by running check generators) on all entities.
 
 All checks must be predefined in **PARAMS** variable. During execution script runs `_data_quality_runner.ipynb_` for each entity defined in **PARAMS** variable.
-
-
-## Updating Data Quality checks using Jupyter Notebooks
-
-The `check_generators` folder contains notebooks to generate Data Quality checks for each data entity. They serve as the main engines of the Data Quality Framework (DQF).
-Each data entity has a dedicated check-generator notebook that acts as a tool where after every run:
-- expectations are generated and saved in the `expectations/` folder;
-- checkpoints are generated and saved in the `checkpoints/` folder;
-- data-source is being created or updated automatically in the `great_expectations.yml` file.
-
 
 ## 'Data docs' reporting
 
@@ -112,9 +110,9 @@ The report is designed to provide a more convenient overview of Data Quality res
 - **Pie Chart: Overall Amount of Passed Checks** – provides an overview of the overall number and percentage of passed checks.
 - **Bar Chart: Passed Checks by Data Quality Dimension** – shows the number of passed checks for each Data Quality dimension.
 - **Heatmap: Check Success Percentage per Layer and Entity by Data Quality Dimension** – shows the percentage of successful checks across data layers, entities, and Data Quality dimensions.
-- **Bar Chart: Run Over Run** – allows comparison of Data Quality results across different validation runs.
+- **Box Chart: Detailed Run-over-Run Success Percentage per Layer and Entity by Data Quality Dimension** – allows comparison of Data Quality results across two latest validation runs.
 - **Critical Data Quality Issues Table** – provides an overview of critical failed checks.
-- 
+
 ## Project Architecture
 ```text
 Project_Boardgames_Data_Validation/
@@ -129,7 +127,7 @@ Project_Boardgames_Data_Validation/
 │   └── (storage for generated data: bronze / silver / gold layered datasets)
 │
 └── validation_results/
-    └── (stored outputs from GX data quality runs) 
+    └── (stored outputs from GX data quality runs)
 ```
 ###  Data-Generator Notebooks
 ```text

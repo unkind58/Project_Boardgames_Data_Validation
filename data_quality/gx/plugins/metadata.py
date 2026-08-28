@@ -292,6 +292,23 @@ METADATA = {
     }
 }
 
+PARAMS_FOR_BOX_CHARTS = [
+    {"DQ_DATASOURCE": "customers", "DQ_LAYER": "bronze"},
+    {"DQ_DATASOURCE": "employees", "DQ_LAYER": "bronze"},
+    {"DQ_DATASOURCE": "games_bgg", "DQ_LAYER": "bronze"},
+    {"DQ_DATASOURCE": "sales", "DQ_LAYER": "bronze"},
+    {"DQ_DATASOURCE": "sales_enriched", "DQ_LAYER": "silver"},
+    {"DQ_DATASOURCE": "country_sales", "DQ_LAYER": "gold"},
+    {"DQ_DATASOURCE": "monthly_sales", "DQ_LAYER": "gold"},
+    {"DQ_DATASOURCE": "top_10_games", "DQ_LAYER": "gold"},
+    {"DQ_DATASOURCE": "employee_perform", "DQ_LAYER": "gold"},
+    {"DQ_DATASOURCE": "geography", "DQ_LAYER": "reference"},
+    {"DQ_DATASOURCE": "vendors", "DQ_LAYER": "reference"},
+    {"DQ_DATASOURCE": "delivery", "DQ_LAYER": "reference"},
+    {"DQ_DATASOURCE": "ga", "DQ_LAYER": "reference"},
+    {"DQ_DATASOURCE": "calendar", "DQ_LAYER": "reference"}
+]
+
 CRITICAL_CHECKS = [
     "expect_column_values_to_be_unique",
     "expect_table_row_count_to_be_between",

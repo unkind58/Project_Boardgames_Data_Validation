@@ -1,10 +1,9 @@
 import os
 import textwrap
 import ipywidgets as widgets
-from marshmallow import missing
 from pyspark.sql import DataFrame, SparkSession
 from datetime import date, timedelta, datetime
-from data_quality.gx.plugins.metadata import METADATA
+from data_quality.gx.plugins.metadata import METADATA, PARAMS_FOR_BOX_CHARTS
 from data_quality.gx.plugins.connectors import SparkConnector
 
 
@@ -390,6 +389,91 @@ def plot_success_percentage_heatmap(df: DataFrame):
                  fontsize=18, y=0.92,x=0.42)
     plt.show()
 
+
+def plot_success_percentage_run_over_run_box_plots(df: DataFrame, df_statistics: DataFrame, layer: str, entity: str):
+    def assign_x_axis_margins(x):
+        value_map = {
+            10: 4.60,
+            9: 4.60,
+            8: 3.60,
+            7: 3.60,
+            6: 2.58,
+            5: 2.58
+        }
+
+        return value_map.get(len(x))
+
+    df_run_over_run_box_plots = df[(df.Layer == layer) & (df.Entity == entity)].sort_values(
+        by=["Layer", "DqMetric", "Entity", "RowNum"], ascending=[True,False,True,False]).reset_index(drop=True).copy()
+
+    plt.figure(figsize=(10,5))
+    run_over_run = sns.barplot(x="DqMetric", y="checks_success_percentage_by_layer_and_entity_by_dimension", hue='RowNum',
+                               data=df_run_over_run_box_plots, palette=['dimgray', 'gold'], edgecolor=".2")
+    for item in run_over_run.get_xticklabels():
+        item.set_rotation(0)
+    plt.xticks(ha="center", fontweight="light", fontsize="large")
+
+    run_over_run.bar_label(run_over_run.containers[0], label_type='edge', fontsize=6.5, fmt="%.2f%%")
+    run_over_run.bar_label(run_over_run.containers[1], label_type='edge', fontsize=6.5, fmt="%.2f%%")
+
+    label_list = []
+    for t in run_over_run.get_legend_handles_labels():
+        label_list.append(t)
+    run_over_run.legend(handles=label_list[0], bbox_to_anchor=(1,1), ncol=1, frameon=False)
+
+    run_over_run.set(xlabel='',
+                     ylabel='Success Percentage, %',
+                     title=f'Previous Run VS Current Run for {layer}_{entity} table')
+    run_over_run.yaxis.grid(linestyle='--', linewidth='0.2', color='skyblue')
+
+    df_test_cases_quantity_by_layer_and_entity = df_statistics \
+        .filter((col('Entity') == entity) & (col('Layer') == layer)) \
+        .filter((col('RowNum') == 1) | (col('RowNum') == 2)) \
+        .groupBy("RowNum").agg(count(col("CheckName")).alias("tes_cases_quantity_by_layer_and_entity"))
+
+    df_raw_quantity_and_metadata = df_statistics \
+        .filter((col("CheckName") == "expect_table_row_count_to_be_between") & (col('Entity') == entity) & (
+            col('Layer') == layer) & (col('ColumnName') == 'None')) \
+        .filter((col('RowNum') == 1) | (col('RowNum') == 2))  \
+        .select('RowNum','ObservedValue', 'RunTime', 'Mode')
+
+    # Previous run variables
+    value_previous = df_raw_quantity_and_metadata.filter(col('RowNum') == 2).select('ObservedValue').collect()[0][0]
+    run_time_previous = df_raw_quantity_and_metadata.filter(col('RowNum') == 2).select('RunTime').collect()[0][0]
+    run_mode_previous = df_raw_quantity_and_metadata.filter(col('RowNum') == 2).select('Mode').collect()[0][0]
+    tc_quantity_previous = df_test_cases_quantity_by_layer_and_entity.filter(col('RowNum') == 2).select(
+        'tes_cases_quantity_by_layer_and_entity').collect()[0][0]
+
+    # Current run variables
+    value_current = df_raw_quantity_and_metadata.filter(col('RowNum') == 1).select('ObservedValue').collect()[0][0]
+    run_time_current = df_raw_quantity_and_metadata.filter(col('RowNum') == 1).select('RunTime').collect()[0][0]
+    run_mode_current = df_raw_quantity_and_metadata.filter(col('RowNum') == 1).select('Mode').collect()[0][0]
+    tc_quantity_current = df_test_cases_quantity_by_layer_and_entity.filter(col('RowNum') == 1).select(
+        'tes_cases_quantity_by_layer_and_entity').collect()[0][0]
+
+    x_axis_value = df_run_over_run_box_plots['DqMetric'].tolist()
+
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=80, s=f'run_mode_current: {run_mode_current.upper()}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=70, s=f'rows_quantity_current: {value_current}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=60, s=f'checks_quantity_current: {tc_quantity_current}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=50, s=f'run_time_current: {run_time_current.strftime("%Y-%m-%d %H:%M:%S")}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=37, s=f'run_mode_previous: {run_mode_previous.upper()}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=27, s=f'rows_quantity_previous: {value_previous}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=17, s=f'checks_quantity_previous: {tc_quantity_previous}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+    run_over_run.text(x=assign_x_axis_margins(x_axis_value), y=7, s=f'run_time_previous: {run_time_previous.strftime("%Y-%m-%d %H:%M:%S")}',
+                      bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), fontsize=12)
+
+    return plt.show()
+
+
 def plot_failed_dq_checks_table(df: DataFrame):
     def wrap_text(text, width=25):
         """
@@ -400,7 +484,7 @@ def plot_failed_dq_checks_table(df: DataFrame):
     # Ensure the DataFrame contains all required columns before proceeding
     columns_for_table = ["Layer", "Entity", "DqMetric", "CheckName", "ColumnName", "SuccessPercentage", "UnexpectedCount"]
     try:
-        df_dq_issues = df.select(columns_for_table).copy(deep=True)
+        df_dq_issues = df[columns_for_table].copy(deep=True)
     except KeyError as err:
         missing_cols = set(columns_for_table) - set(df.columns)
         raise ValueError(f"Missing columns in DataFrame: {missing_cols}. Please ensure the DataFrame contains all required columns.") from err
@@ -417,14 +501,26 @@ def plot_failed_dq_checks_table(df: DataFrame):
 
 
     # Apply Bold formatting to the header row
-    for col in table.get_celld().keys():
-        if col[0] == 0:  # Header row
-            table.get_celld()[col].set_text_props(weight='bold')
+    for record in table.get_celld().keys():
+        if record[0] == 0:  # Header row
+            table.get_celld()[record].set_text_props(weight='bold')
 
     #Define colors for the rows based on the "Layer" column
     alpha = 0.15
+    color_map = {
+        'gold': (1.0, 0.85, 0.0, alpha),
+        'silver': (0.75, 0.75, 0.75, alpha),
+        'bronze': (0.8, 0.5, 0.2, alpha),
+        'reference':(0.6, 1.0, 0.6, alpha)
+    }
+
+    # Apply colors to the rows based on the "Layer" column
+    column_index = df_wrapped_text.columns.get_loc("Layer")
+    for row in range(len(df_wrapped_text)):
+        layer_value = df_wrapped_text.at[row, "Layer"]
+        color = color_map.get(layer_value, (1.0, 1.0, 1.0, alpha))
+        table[(row + 1, column_index)].set_facecolor(color)
 
 
-
-
-
+    plt.subplots_adjust(left=0.15, bottom=0.15)
+    plt.show()
