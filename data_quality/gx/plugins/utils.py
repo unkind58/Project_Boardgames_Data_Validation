@@ -491,36 +491,51 @@ def plot_failed_dq_checks_table(df: DataFrame):
 
     df_wrapped_text = df_dq_issues.applymap(lambda x: wrap_text(x, width=30)).sort_values(by="Layer").reset_index(drop=True)
 
-    fig, ax = plt.subplots(figsize=(16, 8))
-    ax.axis('tight')
-    ax.axis('off')
-    table = ax.table(cellText=df_wrapped_text.values, colLabels=df_wrapped_text.columns, cellLoc='center', loc='center')
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1.5,5.5)
+    # Handle case where there are no critical dq issues
+    if df_wrapped_text.empty:
+        fig, ax = plt.subplots(figsize=(8, 4))
+        ax.axis("off")
+        ax.text(
+            0.5, 0.5,
+            "No critical Data Quality issues found.",
+            ha="center",
+            va="center",
+            fontsize=10
+        )
+        return plt.show()
+
+    else:
+        fig, ax = plt.subplots(figsize=(16, 8))
+        ax.axis('tight')
+        ax.axis('off')
+        table = ax.table(cellText=df_wrapped_text.values, colLabels=df_wrapped_text.columns, cellLoc='center', loc='center')
+        table.auto_set_font_size(False)
+        table.set_fontsize(10)
+        table.scale(1.5,5.5)
 
 
-    # Apply Bold formatting to the header row
-    for record in table.get_celld().keys():
-        if record[0] == 0:  # Header row
-            table.get_celld()[record].set_text_props(weight='bold')
+        # Apply Bold formatting to the header row
+        for record in table.get_celld().keys():
+            if record[0] == 0:  # Header row
+                table.get_celld()[record].set_text_props(weight='bold')
 
-    #Define colors for the rows based on the "Layer" column
-    alpha = 0.15
-    color_map = {
-        'gold': (1.0, 0.85, 0.0, alpha),
-        'silver': (0.75, 0.75, 0.75, alpha),
-        'bronze': (0.8, 0.5, 0.2, alpha),
-        'reference':(0.6, 1.0, 0.6, alpha)
-    }
+        #Define colors for the rows based on the "Layer" column
+        alpha = 0.15
+        color_map = {
+            'gold': (1.0, 0.85, 0.0, alpha),
+            'silver': (0.75, 0.75, 0.75, alpha),
+            'bronze': (0.8, 0.5, 0.2, alpha),
+            'reference':(0.6, 1.0, 0.6, alpha)
+        }
 
-    # Apply colors to the rows based on the "Layer" column
-    column_index = df_wrapped_text.columns.get_loc("Layer")
-    for row in range(len(df_wrapped_text)):
-        layer_value = df_wrapped_text.at[row, "Layer"]
-        color = color_map.get(layer_value, (1.0, 1.0, 1.0, alpha))
-        table[(row + 1, column_index)].set_facecolor(color)
+        # Apply colors to the rows based on the "Layer" column
+        column_index = df_wrapped_text.columns.get_loc("Layer")
+        for row in range(len(df_wrapped_text)):
+            layer_value = df_wrapped_text.at[row, "Layer"]
+            color = color_map.get(layer_value, (1.0, 1.0, 1.0, alpha))
+            table[(row + 1, column_index)].set_facecolor(color)
 
 
-    plt.subplots_adjust(left=0.15, bottom=0.15)
-    plt.show()
+        plt.subplots_adjust(left=0.15, bottom=0.15)
+
+        return plt.show()
