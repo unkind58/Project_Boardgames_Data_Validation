@@ -58,6 +58,9 @@ In order to generate Data for Data Validation, run the following notebooks in th
 ## Creating or Updating Data Quality checks using Jupyter Notebooks
 
 The `check_generators` folder contains notebooks to generate Data Quality checks for each data entity. They serve as the main engines of the Data Quality Framework (DQF).
+
+Please run all check-generator notebooks during the initial setup of the DQF.
+
 Each data entity has a dedicated check-generator notebook that acts as a tool where after every run:
 - expectations are generated and saved in the `expectations/` folder;
 - checkpoints are generated and saved in the `checkpoints/` folder;
@@ -219,6 +222,8 @@ data_quality/
         └── gold_top_10_games.ipynb
 ```
 
+### Render `test_result_report.ipynb` via nbviewer 
+[test_result_report.ipynb](https://nbviewer.org/github/unkind58/Project_Boardgames_Data_Validation/blob/main/data_quality/gx/plugins/custom_report/test_result_report.ipynb)
 
 ### Useful links
 
